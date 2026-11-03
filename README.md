@@ -55,6 +55,26 @@ VehicleRentalSystem/
 └── .gitignore
 ```
 
+
+## 📸 Application Screenshots
+
+### Dashboard
+![Dashboard](screenshots/dashboard.png)
+
+### Vehicle Management
+![Vehicle Management](screenshots/vehicle_management.png)
+
+### Customer Management
+![Customer Management](screenshots/customer_management.png)
+
+### Rental Management
+![Rental Management](screenshots/rental_management.png)
+
+### Invoice Generation
+![Invoice PDF](screenshots/invoice_pdf.png)
+
+
+
 ## 🗄️ Database Setup
 
 1. Install MySQL Server and MySQL Workbench.
