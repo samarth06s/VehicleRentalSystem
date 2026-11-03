@@ -59,22 +59,19 @@ VehicleRentalSystem/
 ## 📸 Application Screenshots
 
 ### Dashboard
-
-![Dashboard](screenshots/dashboard.png)
+<img src="https://raw.githubusercontent.com/samarth06s/VehicleRentalSystem/main/screenshots/dashboard.png" width="800" alt="Dashboard">
 
 ### Vehicle Management
-![Vehicle Management](screenshots/vehicle_management.png)
+<img src="https://raw.githubusercontent.com/samarth06s/VehicleRentalSystem/main/screenshots/vehicle_management.png" width="800" alt="Vehicle Management">
 
 ### Customer Management
-![Customer Management](screenshots/customer_management.png)
+<img src="https://raw.githubusercontent.com/samarth06s/VehicleRentalSystem/main/screenshots/customer_management.png" width="800" alt="Customer Management">
 
 ### Rental Management
-![Rental Management](screenshots/rental_management.png)
+<img src="https://raw.githubusercontent.com/samarth06s/VehicleRentalSystem/main/screenshots/rental_management.png" width="800" alt="Rental Management">
 
 ### Invoice Generation
-![Invoice PDF](screenshots/invoice_pdf.png)
-
-
+<img src="https://raw.githubusercontent.com/samarth06s/VehicleRentalSystem/main/screenshots/invoice.png" width="800" alt="Invoice Generation">
 ## 🗄️ Database Setup
 
 1. Install MySQL Server and MySQL Workbench.
