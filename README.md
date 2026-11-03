@@ -106,6 +106,43 @@ Replace the placeholders with your MySQL credentials.
 
 **Security Note:** Never upload your actual `db.properties` file or database credentials to GitHub.
 
+## ⚙️ Installation & Setup
+
+### Prerequisites
+- Java 21 or later
+- MySQL 8.0
+- MySQL Workbench (recommended)
+
+### Database Setup
+1. Open MySQL Workbench.
+2. Execute the SQL script from `database/schema.sql`.
+3. Create the database and tables.
+
+### Database Configuration
+Create the configuration directory:
+
+`~/.vehicle-rental-system/`
+
+Inside it, create `db.properties`:
+
+```properties
+db.url=jdbc:mysql://localhost:3306/vehicle_rental
+db.username=YOUR_MYSQL_USERNAME
+db.password=YOUR_MYSQL_PASSWORD
+```
+
+Replace the values with your local MySQL credentials.
+
+**Important:** Never commit your actual `db.properties` file or share your database password.
+
+### Run the Application
+
+Run the executable JAR:
+
+```bash
+java -jar vehicle-rental-system-1.0-SNAPSHOT.jar
+```
+
 ## ▶️ How to Run
 
 ### Option 1: IntelliJ IDEA
