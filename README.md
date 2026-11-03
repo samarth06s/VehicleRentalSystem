@@ -90,21 +90,46 @@ VehicleRentalSystem/
 
 ### Database Configuration
 
+The application loads database credentials from an external configuration file.
+
+**1. Create the configuration directory**
+
+On macOS or Linux, run:
+
+```bash
+mkdir -p ~/.vehicle-rental-system
+```
+
+**2. Create the configuration file**
+
 Create a file named `db.properties` inside:
 
-`src/main/resources/`
+`~/.vehicle-rental-system/`
 
-Add the following configuration:
+Add the following:
 
 ```properties
 db.url=jdbc:mysql://localhost:3306/vehicle_rental
-db.username=YOUR_USERNAME
-db.password=YOUR_PASSWORD
+db.username=YOUR_MYSQL_USERNAME
+db.password=YOUR_MYSQL_PASSWORD
 ```
 
-Replace the placeholders with your MySQL credentials.
+Replace the placeholders with your own MySQL credentials.
 
-**Security Note:** Never upload your actual `db.properties` file or database credentials to GitHub.
+**Important:** Do not upload this file or share your database password. The configuration file is intentionally kept outside the project.
+
+### Running the Downloaded Application
+
+1. Download the latest executable JAR from the [GitHub Releases](https://github.com/samarth06s/VehicleRentalSystem/releases/latest) page.
+2. Ensure MySQL is running and the database is configured.
+3. Open Terminal in the downloaded JAR's folder.
+4. Run:
+
+```bash
+java -jar vehicle-rental-system-1.0.1.jar
+```
+
+**Requirements:** Java 21 or later and MySQL 8.0.
 
 ## ⚙️ Installation & Setup
 
