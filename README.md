@@ -59,6 +59,7 @@ VehicleRentalSystem/
 ## 📸 Application Screenshots
 
 ### Dashboard
+
 ![Dashboard](screenshots/dashboard.png)
 
 ### Vehicle Management
@@ -72,7 +73,6 @@ VehicleRentalSystem/
 
 ### Invoice Generation
 ![Invoice PDF](screenshots/invoice_pdf.png)
-
 
 
 ## 🗄️ Database Setup
