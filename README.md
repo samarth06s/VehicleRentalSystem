@@ -1,54 +1,75 @@
-# Vehicle Rental Management System
 
-A desktop-based Vehicle Rental Management System developed using Java Swing and MySQL. The application helps manage vehicles, customers, rentals, returns, and invoices through a user-friendly graphical interface.
+# 🚗 Vehicle Rental Management System
 
-## Features
+A Java-based desktop application developed using **Java Swing and MySQL** to simplify vehicle rental operations. The system provides an integrated interface for managing vehicles, customers, bookings, returns, rental charges, and invoices.
+
+## ✨ Features
 
 - **Dashboard:** View vehicle statistics, customer counts, and rental summaries.
-- **Vehicle Management:** Add, update, delete, search, and view vehicles.
-- **Customer Management:** Maintain customer information and driving licence details.
-- **Rental Management:** Book vehicles, process returns, and calculate rental charges.
-- **Late Fee Calculation:** Automatically calculate overdue charges at ₹200 per day.
+- **Vehicle Management:** Add, update, delete, search, and view vehicle records.
+- **Customer Management:** Manage customer information and driving licence details.
+- **Rental Management:** Book vehicles, process returns, and track rental records.
+- **Automatic Late Fee Calculation:** Calculate overdue charges at ₹200 per day.
 - **Invoice Generation:** View, print, and export completed rental invoices as PDF.
-- **Database Integration:** Store and manage information using MySQL.
+- **MySQL Database Integration:** Store and manage application data.
+- **Modern GUI:** Clean desktop interface built with Java Swing and FlatLaf.
 
-## Technologies Used
+## 🛠️ Technologies Used
 
-- Java 21
-- Java Swing
-- MySQL 8
-- JDBC
-- Maven
-- FlatLaf
-- Apache PDFBox
-- IntelliJ IDEA
-- Git and GitHub
+| Technology | Purpose |
+|---|---|
+| Java 21 | Core programming language |
+| Java Swing | Desktop GUI |
+| MySQL 8 | Database management |
+| JDBC | Database connectivity |
+| Maven | Dependency and build management |
+| FlatLaf | Modern Swing interface |
+| Apache PDFBox | PDF invoice generation |
+| IntelliJ IDEA | Development environment |
+| Git & GitHub | Version control |
 
-## Project Structure
+## 📁 Project Structure
 
 ```text
 VehicleRentalSystem/
-├── src/main/java/com/vehiclerental/
-│   ├── config/
-│   ├── dao/
-│   ├── model/
-│   ├── service/
-│   ├── ui/
-│   ├── util/
-│   └── Main.java
-├── src/main/resources/
+│
+├── src/
+│   └── main/
+│       ├── java/com/vehiclerental/
+│       │   ├── config/
+│       │   ├── dao/
+│       │   ├── model/
+│       │   ├── service/
+│       │   ├── ui/
+│       │   ├── util/
+│       │   └── Main.java
+│       │
+│       └── resources/
+│           └── db.properties.example
+│
+├── database/
+│   └── schema.sql
+│
 ├── pom.xml
-└── README.md
+├── README.md
+└── .gitignore
 ```
 
-## Database Setup
+## 🗄️ Database Setup
 
 1. Install MySQL Server and MySQL Workbench.
-2. Create a database named `vehicle_rental`.
-3. Create the required tables: `vehicles`, `customers`, and `rentals`.
-4. Configure your MySQL credentials in `src/main/resources/db.properties`.
+2. Open the project in IntelliJ IDEA.
+3. Open `database/schema.sql` in MySQL Workbench.
+4. Execute the SQL script to create the `vehicle_rental` database and required tables.
+5. Configure your database connection.
 
-Example configuration:
+### Database Configuration
+
+Create a file named `db.properties` inside:
+
+`src/main/resources/`
+
+Add the following configuration:
 
 ```properties
 db.url=jdbc:mysql://localhost:3306/vehicle_rental
@@ -56,9 +77,13 @@ db.username=YOUR_USERNAME
 db.password=YOUR_PASSWORD
 ```
 
-**Important:** Never upload your actual database credentials to GitHub.
+Replace the placeholders with your MySQL credentials.
 
-## How to Run
+**Security Note:** Never upload your actual `db.properties` file or database credentials to GitHub.
+
+## ▶️ How to Run
+
+### Option 1: IntelliJ IDEA
 
 1. Clone the repository:
 
@@ -68,17 +93,31 @@ git clone https://github.com/samarth06s/VehicleRentalSystem.git
 
 2. Open the project in IntelliJ IDEA.
 3. Allow Maven to download the dependencies.
-4. Configure the MySQL database and `db.properties`.
-5. Run `Main.java`.
+4. Set up the MySQL database.
+5. Configure `db.properties`.
+6. Run `Main.java`.
 
-## Developer
+### Option 2: Maven Build
 
-**Samarth Shikari** \
-**Saurabh Fatangade**\
-**Jay Jadhav**\
-**Pruthviraj Nimbalkar**\
-B.Tech Computer Science and Engineering  
-Sanjivani University
+Open the Maven panel in IntelliJ IDEA and run:
+
+- `clean`
+- `package`
+
+The generated JAR will be available inside the `target/` directory.
+
+The application requires Java 21, a running MySQL server, and a valid database configuration.
+
+## 👨‍💻 Development Team
+
+- **Samarth Shikari**
+- **Saurabh Fatangade**
+- **Jay Jadhav**
+- **Pruthviraj Nimbalkar**
+
+B.Tech – Computer Science and Engineering
+
+**Sanjivani University**
 
 ---
 

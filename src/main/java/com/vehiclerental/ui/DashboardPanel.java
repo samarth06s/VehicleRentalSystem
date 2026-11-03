@@ -10,6 +10,10 @@ import java.sql.SQLException;
 
 public class DashboardPanel extends JPanel {
 
+    private static final Color BACKGROUND = new Color(245, 247, 251);
+    private static final Color DARK = new Color(30, 41, 59);
+    private static final Color MUTED = new Color(110, 120, 135);
+
     private final DashboardDAO dashboardDAO = new DashboardDAO();
 
     private final JLabel totalVehiclesValue = new JLabel("...");
@@ -26,22 +30,40 @@ public class DashboardPanel extends JPanel {
 
     public DashboardPanel() {
 
-        setLayout(new BorderLayout(20, 20));
-        setBackground(new Color(245, 247, 250));
-        setBorder(new EmptyBorder(25, 25, 25, 25));
+        setLayout(new BorderLayout(20, 25));
+        setBackground(BACKGROUND);
+        setBorder(new EmptyBorder(28, 30, 28, 30));
 
+        // Heading
         JLabel title = new JLabel("Dashboard");
-        title.setFont(new Font("SansSerif", Font.BOLD, 28));
+        title.setFont(new Font("SansSerif", Font.BOLD, 30));
+        title.setForeground(DARK);
 
         JLabel subtitle = new JLabel(
                 "Overview of your vehicle rental business"
         );
-        subtitle.setForeground(Color.GRAY);
+        subtitle.setFont(new Font("SansSerif", Font.PLAIN, 14));
+        subtitle.setForeground(MUTED);
 
-        JPanel heading = new JPanel(new BorderLayout());
+        JPanel heading = new JPanel();
+        heading.setLayout(new BoxLayout(heading, BoxLayout.Y_AXIS));
         heading.setOpaque(false);
-        heading.add(title, BorderLayout.NORTH);
-        heading.add(subtitle, BorderLayout.CENTER);
+
+        heading.add(title);
+        heading.add(Box.createVerticalStrut(6));
+        heading.add(subtitle);
+
+        // Refresh button styling
+        refreshButton.setFont(new Font("SansSerif", Font.BOLD, 13));
+        refreshButton.setForeground(Color.WHITE);
+        refreshButton.setBackground(new Color(37, 99, 235));
+        refreshButton.setFocusPainted(false);
+        refreshButton.setBorder(
+                new EmptyBorder(11, 22, 11, 22)
+        );
+        refreshButton.setCursor(
+                Cursor.getPredefinedCursor(Cursor.HAND_CURSOR)
+        );
 
         refreshButton.addActionListener(e -> loadDashboardData());
 
@@ -52,74 +74,108 @@ public class DashboardPanel extends JPanel {
 
         add(topPanel, BorderLayout.NORTH);
 
-        // Six dashboard statistics cards
+        // Statistics cards
         JPanel cardsPanel = new JPanel(
-                new GridLayout(2, 3, 20, 20)
+                new GridLayout(2, 3, 18, 18)
         );
         cardsPanel.setOpaque(false);
 
         cardsPanel.add(createStatCard(
-                "Total Vehicles", totalVehiclesValue));
+                "Total Vehicles",
+                totalVehiclesValue,
+                new Color(59, 130, 246)
+        ));
 
         cardsPanel.add(createStatCard(
-                "Available Vehicles", availableVehiclesValue));
+                "Available Vehicles",
+                availableVehiclesValue,
+                new Color(22, 163, 74)
+        ));
 
         cardsPanel.add(createStatCard(
-                "Rented Vehicles", rentedVehiclesValue));
+                "Rented Vehicles",
+                rentedVehiclesValue,
+                new Color(234, 138, 30)
+        ));
 
         cardsPanel.add(createStatCard(
-                "Total Customers", totalCustomersValue));
+                "Total Customers",
+                totalCustomersValue,
+                new Color(14, 165, 180)
+        ));
 
         cardsPanel.add(createStatCard(
-                "Active Rentals", activeRentalsValue));
+                "Active Rentals",
+                activeRentalsValue,
+                new Color(139, 92, 246)
+        ));
 
         cardsPanel.add(createStatCard(
-                "Completed Rentals", completedRentalsValue));
+                "Completed Rentals",
+                completedRentalsValue,
+                new Color(16, 145, 120)
+        ));
 
+        // Dashboard content
         JPanel dashboardContent = new JPanel(
-                new BorderLayout(20, 20)
+                new BorderLayout(20, 22)
         );
-
         dashboardContent.setOpaque(false);
 
-// Statistics at the top
         dashboardContent.add(cardsPanel, BorderLayout.NORTH);
-
-// Pie chart below statistics
         dashboardContent.add(
                 vehicleStatusChart,
                 BorderLayout.CENTER
         );
 
         add(dashboardContent, BorderLayout.CENTER);
+
         loadDashboardData();
     }
 
-    private JPanel createStatCard(String title, JLabel valueLabel) {
+    private JPanel createStatCard(
+            String title,
+            JLabel valueLabel,
+            Color accentColor
+    ) {
 
-        JPanel card = new JPanel(new BorderLayout(10, 15));
-
+        JPanel card = new JPanel(new BorderLayout(12, 0));
         card.setBackground(Color.WHITE);
 
         card.setBorder(BorderFactory.createCompoundBorder(
                 BorderFactory.createLineBorder(
-                        new Color(225, 230, 235)),
-                new EmptyBorder(25, 25, 25, 25)
+                        new Color(230, 234, 240)
+                ),
+                new EmptyBorder(18, 18, 18, 18)
         ));
 
+        // Colored accent strip
+        JPanel accent = new JPanel();
+        accent.setBackground(accentColor);
+        accent.setPreferredSize(new Dimension(5, 10));
+
+        // Card text
         JLabel titleLabel = new JLabel(title);
         titleLabel.setFont(
-                new Font("SansSerif", Font.PLAIN, 16)
+                new Font("SansSerif", Font.PLAIN, 14)
         );
-        titleLabel.setForeground(Color.GRAY);
+        titleLabel.setForeground(MUTED);
 
         valueLabel.setFont(
                 new Font("SansSerif", Font.BOLD, 32)
         );
-        valueLabel.setForeground(new Color(30, 50, 80));
+        valueLabel.setForeground(DARK);
 
-        card.add(titleLabel, BorderLayout.NORTH);
-        card.add(valueLabel, BorderLayout.CENTER);
+        JPanel textPanel = new JPanel(
+                new BorderLayout(0, 12)
+        );
+        textPanel.setOpaque(false);
+
+        textPanel.add(titleLabel, BorderLayout.NORTH);
+        textPanel.add(valueLabel, BorderLayout.CENTER);
+
+        card.add(accent, BorderLayout.WEST);
+        card.add(textPanel, BorderLayout.CENTER);
 
         return card;
     }
@@ -127,6 +183,7 @@ public class DashboardPanel extends JPanel {
     private void loadDashboardData() {
 
         refreshButton.setEnabled(false);
+        refreshButton.setText("Loading...");
 
         new SwingWorker<int[], Void>() {
 
@@ -151,27 +208,32 @@ public class DashboardPanel extends JPanel {
                     int[] stats = get();
 
                     totalVehiclesValue.setText(
-                            String.valueOf(stats[0]));
+                            String.valueOf(stats[0])
+                    );
 
                     availableVehiclesValue.setText(
-                            String.valueOf(stats[1]));
+                            String.valueOf(stats[1])
+                    );
 
                     rentedVehiclesValue.setText(
-                            String.valueOf(stats[2]));
+                            String.valueOf(stats[2])
+                    );
 
                     totalCustomersValue.setText(
-                            String.valueOf(stats[3]));
+                            String.valueOf(stats[3])
+                    );
 
                     activeRentalsValue.setText(
-                            String.valueOf(stats[4]));
+                            String.valueOf(stats[4])
+                    );
 
                     completedRentalsValue.setText(
-                            String.valueOf(stats[5]));
+                            String.valueOf(stats[5])
+                    );
 
-                    // Update vehicle availability chart
                     vehicleStatusChart.setCounts(
-                            stats[1],  // Available vehicles
-                            stats[2]   // Rented vehicles
+                            stats[1],
+                            stats[2]
                     );
 
                 } catch (Exception e) {
@@ -185,7 +247,9 @@ public class DashboardPanel extends JPanel {
                     );
 
                 } finally {
+
                     refreshButton.setEnabled(true);
+                    refreshButton.setText("Refresh");
                 }
             }
 
