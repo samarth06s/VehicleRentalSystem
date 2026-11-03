@@ -71,7 +71,7 @@ VehicleRentalSystem/
 <img src="https://raw.githubusercontent.com/samarth06s/VehicleRentalSystem/main/screenshots/rental_management.png" width="800" alt="Rental Management">
 
 ### Invoice Generation
-<img src="https://raw.githubusercontent.com/samarth06s/VehicleRentalSystem/main/screenshots/invoice.png" width="800" alt="Invoice Generation">
+<img src="https://raw.githubusercontent.com/samarth06s/VehicleRentalSystem/main/screenshots/invoice_pdf.png" width="800" alt="Invoice Generation">
 ## 🗄️ Database Setup
 
 1. Install MySQL Server and MySQL Workbench.
